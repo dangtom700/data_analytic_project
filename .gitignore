@@ -1,3 +1,5 @@
 *.csv
-*.waw
+*.wav
 *.txt
+*.pkl
+*.bdf
