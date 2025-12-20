@@ -66,3 +66,8 @@ Notes:
 
 - Underfitting (high bias): trained model can neither re-produce the training data nor generalize to new data. Poor on both training and generalization. Happens when the model is too simple to learn the underlying structure of the data
 - Overfitting (high variance): trained model performs well on the training data, but it generalizes poorly. Happens where a trained model follows the training data too much, or data is too complex, noisy (irrelevant patterns in the training data), or large number of features
+
+
+## How to use this repo
+
+Every complete data analytics in located in the archieve folder
