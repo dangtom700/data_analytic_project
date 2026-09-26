@@ -1,8 +1,50 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Datasets — never committed. Re-create with:  python data_download.py
+# (see docs/DATASETS.md for the two datasets that need a manual download)
+#
+# Everything under data/ is ignored EXCEPT the per-dataset README.md files,
+# which are the documentation for data we don't store in git.
+# ─────────────────────────────────────────────────────────────────────────────
+data/**
+!data/**/
+!data/**/README.md
+
+# Third-party reference catalogue, cloned not authored.
+# Source: github.com/dalmia/awesome-industrial-datasets
+awesome-industrial-datasets-master/
+
+# Course lab submission bundles — the extracted work is already in archive/
+archive/**/*.zip
+
+# ─── Data file types, wherever they land ───
 *.csv
+*.tsv
+*.parquet
 *.wav
 *.txt
 *.pkl
+*.joblib
 *.bdf
 *.db
 *.db-shm
 *.db-wal
+*.h5
+*.hdf5
+*.npy
+*.npz
+# ...but keep dependency and doc text files
+!requirements*.txt
+!LICENSE*.txt
+
+# ─── Python ───
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.ipynb_checkpoints/
+
+# ─── Editors / OS ───
+.DS_Store
+Thumbs.db
+desktop.ini

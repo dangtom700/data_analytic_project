@@ -1,73 +1,125 @@
-# Introduction to Machine Learning in Mechatronics
+# Industrial Data Analytics
 
-## Objectives
+A working collection of **16 industrial process & predictive-maintenance datasets**
+(~17 GB) together with the completed data-analysis notebooks built from them.
 
-- Gain a profound understanding of a diverse range of machine learning algorithms, exploring their principles, functionalisties, and applications
-- Develop the capability to evaluate models generated from data, employing techniques to access their accuracy, reliability, and generalization to real-world scenarios.
-- Build skills in systematically analyzing complex systems, identifying relevant challenges, and designing effective ML-based solutions for complex diagnostics, monitoring, and control
+The theme is industrial condition monitoring: fault detection, anomaly detection
+and remaining-useful-life estimation on chemical reactors, distillation columns,
+heat exchangers, pumps, valves, boilers and factory machinery.
 
-## Goals
+| | |
+|---|---|
+| **Datasets** | 16 (15 Kaggle + 1 Mendeley) · ~17 GB on disk · **not in git** |
+| **Completed analyses** | 12, in [`archive/`](archive/) |
+| **Catalogue** | [`docs/DATASETS.md`](docs/DATASETS.md) — source, licence, schema, quirks |
+| **Course notes** | [`docs/ml-course-notes.md`](docs/ml-course-notes.md) |
 
-- Explain the strengths and limitations of the various machine leanring algorithms
-- Evaluate ML methods performance and select a proper one for your data
-Go through the end-to-end pipeline of an ML project (from data cleaning to model evaluation)
+---
 
-## Terminologies
+## Quick start
 
-- Artificial intelligent (AI): any effort in the development of computer systems to perform tasks that require human intelligence
-- Machine learning (ML): a subset of AI, involves algorithms that allow computers to learn from data rather than being explicitly programmed to do so
-- Deep learning (DL): a specialized subset of ML, involves neural networks with several layers (from 1 to hundereds) that can analyze various factors of a dataset
-- Generative AI: an advanced subset of AI and DL. GenAI focuses on creating new and unique outputs. It goes beyond the scope of simply analyzing data to making new creations baed on learned patterns
+```bash
+# 1. Environment
+conda env create -f environment.yml
+conda activate data_science
 
-## When to use ML
+# 2. Datasets (~15 GB download, needs a Kaggle API token)
+python data_download.py
+```
 
-- A system driven by ML algorithms can learn to make decisions and adapt to its environment
-- ML is used when human are unable to explain a system's behavior or when solution needs to be adapted to particular cases
+`data_download.py` pulls the 15 Kaggle datasets into `data/<dataset-slug>/` via
+`kagglehub`. It skips any folder that already exists, so it is safe to re-run.
 
-## ML underneath the hood
+**One dataset needs a manual download** — IndPenSim (penicillin fermentation) is
+hosted on Mendeley Data, not Kaggle. See
+[`data/indpensim-penicillin-fermentation/README.md`](data/indpensim-penicillin-fermentation/README.md).
 
-- Statistics: inference from a sample
-- Optimization: a performance criterion evaluation using example data (experience). Every ML algorithm contains an internal optimization algorithm
-- Computer science: effecient algorithms to solve the optimization problem and representing and evaluating the model for inference
+> `environment.yml` is a full conda export from **Windows / Python 3.14** and
+> pins exact build strings, so it will not solve on macOS or Linux. On another
+> platform install the essentials instead:
+> `pandas numpy scipy scikit-learn matplotlib seaborn statsmodels jupyter tabulate`
+> (plus `tensorflow` for `archive/lab4`, `scikit-learn-extra` for `archive/lab3`,
+> `opencv` + `dlib` for `archive/MSE413_project`).
 
-## Categories of ML
+---
 
-- Supervised (labeled data) are categoried into regression (mapping input variables to some continuous function) and classification (mapping input variables into discrete categories)
-- Unsupervised (unlabeled data) are categoried into clustering, dimensionality reduction, outliner detection and association rules learning
-- Reinforcement leanring: Ai faces a game-like situation. The computer employs trial and error to come up with a solution to the problem. To get the machine to do what the programmer wants, the AI gets either rewards or penalties for the actions it performs. Its goal is to maximize the total reward
+## Layout
 
-## Machine learning process
+```
+data_analytic_project/
+├── data/                  16 datasets, one folder each, git-ignored
+│   └── <dataset>/README.md    ← the only tracked files in here
+├── archive/               12 completed analyses (notebooks + reports)
+├── docs/
+│   ├── DATASETS.md            full data catalogue
+│   └── ml-course-notes.md     MSE 413 study notes
+├── awesome-industrial-datasets-master/   third-party catalogue, git-ignored
+├── data_download.py       Kaggle fetch script
+└── environment.yml        conda environment (Windows)
+```
 
-In machine learning applications, a data scientist or other analyst
+### Why the data isn't in git
 
-- Identifies relevant data sets and prepares them for analysis
-- Chooses the type of machine learning algorithm to use
-- Builds an analytical model based on the choosen algorithm
-- Trains the model on the data sets, revising it as needed
-- Runs the model to generate scores and other findings
+At ~17 GB the datasets are far larger than a git repo should carry, and every
+one of them is re-downloadable from its source. `.gitignore` excludes everything
+under `data/` **except** each dataset's `README.md` — so the documentation
+travels with the repo while the bytes do not.
 
-Notes:
+If you clone this repo fresh, `data/` will contain only those README files until
+you run `data_download.py`.
 
-- Feature engineering: a process that involves determining which features might be useful in training a model and combining existing features to produce a more useful one
-- Training: the process of determing the parameter (weights and biases) of an ML model to perform a specific task (regression/classfication)
-- Validation: optinal data set to fine tune hyper-parameter of a model
-- Test: the process of inputting values that a model has never seen before to get an evaluation of how well the model performs in generalization.
+### `awesome-industrial-datasets-master/`
 
-## ML challenges
+A clone of [awesome-industrial-datasets](https://github.com/dalmia/awesome-industrial-datasets)
+— 190 industrial datasets described in JSON and Markdown, plus a taxonomy. Kept
+as a reference for finding *more* data; nothing here depends on it, and it is
+git-ignored because it is someone else's repository.
 
-### Data related issues
+---
 
-- Insufficient quantity of data
-- Nonrepresentative data
-- Poor quality data
-- Irrelevant features
+## The datasets
 
-### Algorithm related issues
+Full detail — row counts, every column, licences, known data-quality problems —
+lives in **[`docs/DATASETS.md`](docs/DATASETS.md)**. Summary:
 
-- Underfitting (high bias): trained model can neither re-produce the training data nor generalize to new data. Poor on both training and generalization. Happens when the model is too simple to learn the underlying structure of the data
-- Overfitting (high variance): trained model performs well on the training data, but it generalizes poorly. Happens where a trained model follows the training data too much, or data is too complex, noisy (irrelevant patterns in the training data), or large number of features
+| Dataset | Size | Rows | Task |
+|---|---|---|---|
+| [`tep-csv`](data/tep-csv/README.md) | 5.7 GB | 15.3 M | Tennessee Eastman process — 20-fault classification |
+| [`noboom-…-chemical-processes`](data/noboom-anomaly-detection-in-chemical-processes/README.md) | 8.0 GB | 177 files | Distillation column anomaly detection, real rigs |
+| [`indpensim-penicillin-fermentation`](data/indpensim-penicillin-fermentation/README.md) | 2.4 GB | 113,935 | Batch fermentation + Raman spectra |
+| [`metropt-3-dataset`](data/metropt-3-dataset/README.md) | 209 MB | 1.52 M | Metro train air compressor failures (real) |
+| [`chemical-process-monitoring-…`](data/chemical-process-monitoring-time-series-dataset/README.md) | 201 MB | 777,600 | Reactor fault type + time-to-fault |
+| [`shell-and-tube-heat-exchanger-…`](data/shell-and-tube-heat-exchanger-fouling-simulation/README.md) | 167 MB | 700,800 | Heat exchanger fouling regression |
+| [`industrial-pump-…-digital-twin`](data/industrial-pump-physics-grounded-digital-twin/README.md) | 116 MB | 379,786 | Pump RUL + failure probability |
+| [`industrial-control-valve-sensor-data`](data/industrial-control-valve-sensor-data/README.md) | 76 MB | 200,000 | Valve failure classification |
+| [`smart-factory-predictive-maintenance`](data/smart-factory-predictive-maintenance-dataset/README.md) | 41 MB | 100,000 | Machine failure + failure type (72 cols) |
+| [`time-series-of-industrial-boiler-…`](data/time-series-of-industrial-boiler-operations/README.md) | 39 MB | 86,400 ×2 | Boiler sensor time series (real, published) |
+| [`pump-station-sensor-data`](data/pump-station-sensor-data/README.md) | 17 MB | 100,000 | Pump efficiency regression |
+| [`heat-exchanger-fouling-sensor`](data/heat-exchanger-fouling-sensor/README.md) | 7.3 MB | 40,267 | Fouling detection (balanced 50/50) |
+| [`industrial-iot-predictive-maintenance-pdm`](data/industrial-iot-predictive-maintenance-pdm/README.md) | 3.6 MB | 36,000 | 3-class machine status |
+| [`petrochemical-process-optimization-…`](data/petrochemical-process-optimization-and-maintenance/README.md) | 2.7 MB | 10,000 | Yield / energy-intensity regression |
+| [`industrial-sensor-anomaly-detection`](data/industrial-sensor-anomaly-detection-dataset/README.md) | 2.2 MB | 1,000 + 500 | SWaT / WADI samples (tiny, pre-scaled) |
+| [`batch-reactor-anomaly-data-sample`](data/batch-reactor-anomaly-data-sample/README.md) | 156 KB | 4,901 | Batch reactor EDA sample |
 
+**Most of these are synthetic.** Only MetroPT-3, the industrial boiler data, the
+NoBoom distillation rigs and IndPenSim are measured or published-simulator data.
+The rest are generated Kaggle datasets — fine for practising a pipeline,
+not for claiming a result about real equipment. `docs/DATASETS.md` marks each one.
 
-## How to use this repo
+---
 
-Every complete data analytics in located in the archieve folder
+## Completed analyses
+
+12 finished analyses live in [`archive/`](archive/) — see
+[`archive/README.md`](archive/README.md) for what each one covers. They are
+self-contained: notebook, rendered HTML and (for coursework) the submitted PDF
+report. None of them read from `data/`; they predate this dataset collection and
+load their own data inline or from Kaggle directly.
+
+## Conventions
+
+- One dataset per folder under `data/`, named for its Kaggle slug.
+- Every dataset folder has a `README.md`: source URL, licence, size, schema,
+  and any data-quality traps found while profiling it.
+- Analyses are self-contained folders under `archive/`.
+- Data files are never committed. Documentation always is.
