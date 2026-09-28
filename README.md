@@ -47,6 +47,7 @@ hosted on Mendeley Data, not Kaggle. See
 
 ```
 data_analytic_project/
+├── <dataset>/             ← at the root = WORK IN PROGRESS (see below)
 ├── data/                  16 datasets, one folder each, git-ignored
 │   └── <dataset>/README.md    ← the only tracked files in here
 ├── archive/               12 completed analyses (notebooks + reports)
@@ -57,6 +58,21 @@ data_analytic_project/
 ├── data_download.py       Kaggle fetch script
 └── environment.yml        conda environment (Windows)
 ```
+
+### Work in progress
+
+**A dataset folder at the repo root, rather than under `data/`, is the one being
+actively worked on.** It gets moved back into `data/` when the analysis is done.
+This is deliberate — the folder sitting at the top of the tree is the reminder of
+what's open.
+
+Currently in progress: **`chemical-process-monitoring-time-series-dataset/`**
+
+`.gitignore` treats a root-level dataset folder the same way it treats `data/` —
+bulk data ignored, `README.md` and notebooks tracked — so the working notebook and
+its documentation are versioned while several hundred MB of CSVs and plots are
+not. When a dataset moves back into `data/`, delete its three lines from
+`.gitignore`; when the next one starts, copy them and change the name.
 
 ### Why the data isn't in git
 
@@ -88,7 +104,7 @@ lives in **[`docs/DATASETS.md`](docs/DATASETS.md)**. Summary:
 | [`noboom-…-chemical-processes`](data/noboom-anomaly-detection-in-chemical-processes/README.md) | 8.0 GB | 177 files | Distillation column anomaly detection, real rigs |
 | [`indpensim-penicillin-fermentation`](data/indpensim-penicillin-fermentation/README.md) | 2.4 GB | 113,935 | Batch fermentation + Raman spectra |
 | [`metropt-3-dataset`](data/metropt-3-dataset/README.md) | 209 MB | 1.52 M | Metro train air compressor failures (real) |
-| [`chemical-process-monitoring-…`](data/chemical-process-monitoring-time-series-dataset/README.md) | 201 MB | 777,600 | Reactor fault type + time-to-fault |
+| [`chemical-process-monitoring-…`](chemical-process-monitoring-time-series-dataset/README.md) **⟵ in progress** | 201 MB | 777,600 | Reactor fault type + time-to-fault |
 | [`shell-and-tube-heat-exchanger-…`](data/shell-and-tube-heat-exchanger-fouling-simulation/README.md) | 167 MB | 700,800 | Heat exchanger fouling regression |
 | [`industrial-pump-…-digital-twin`](data/industrial-pump-physics-grounded-digital-twin/README.md) | 116 MB | 379,786 | Pump RUL + failure probability |
 | [`industrial-control-valve-sensor-data`](data/industrial-control-valve-sensor-data/README.md) | 76 MB | 200,000 | Valve failure classification |

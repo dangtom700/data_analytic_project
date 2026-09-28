@@ -41,9 +41,10 @@ findings across those three as **one** result, not three independent ones.
 
 ## 2. Licences — mostly unverified
 
-Only one dataset here ships a licence file. **The rest were downloaded without
-recording a licence**, and Kaggle pages don't render for automated fetching, so
-these need a manual check.
+Only one dataset here ships a licence file, and one more has been confirmed from
+its source page. **The remaining eleven were downloaded without recording a
+licence**, and Kaggle pages don't render for automated fetching, so those need a
+manual check.
 
 | Dataset | Licence |
 |---|---|
@@ -51,7 +52,8 @@ these need a manual check.
 | `time-series-of-industrial-boiler-operations` | Governed by the *Scientific Data* record — cite the paper |
 | `metropt-3-dataset` | Upstream UCI record is CC BY 4.0 — confirm the Kaggle mirror |
 | `indpensim-penicillin-fermentation` | Mendeley Data record (likely CC BY 4.0) — confirm |
-| *all others* | **Not recorded** — check the Kaggle page before publishing or sharing |
+| `chemical-process-monitoring-time-series-dataset` | **CC0 (Public Domain)** — no restrictions |
+| *the other 11* | **Not recorded** — check the Kaggle page before publishing or sharing |
 
 **To do:** open each source page, record the licence in that dataset's
 `README.md`, and replace the "not recorded" line. Fifteen minutes of work that
@@ -138,7 +140,7 @@ Use `GroupKFold` / `GroupShuffleSplit`, or `TimeSeriesSplit` where order matters
 | `pump-station-sensor-data` | ~5% in all 10 features | Same |
 | `industrial-control-valve-sensor-data` | ~5% in all 24 features | Same — `dropna()` costs ~70% of rows |
 | `chemical-process-monitoring-…` | ~6% in all sensors | Same |
-| `chemical-process-monitoring-…` | `time_to_fault_min` 90.6% | **By design** — only populated before a fault. Filter, don't impute |
+| `chemical-process-monitoring-…` | `time_to_fault_min` 96.6% | **By design** — only populated before a fault. Filter, don't impute |
 | `industrial-pump-…` | `failure_type` 99.9%, `maintenance_type` 99.7% | **By design** — event annotations, not measurements |
 | `industrial-pump-…` | `temperature_c` 1.9% | Real dropout (see `sensor_dropout`) |
 | `indpensim-…` | Offline assay columns mostly `NaN` | **By design** — offline samples are infrequent |
