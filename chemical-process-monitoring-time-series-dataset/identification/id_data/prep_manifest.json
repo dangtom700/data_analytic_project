@@ -1,0 +1,132 @@
+{
+  "Ts": 60.0,
+  "u_cols": [
+    "coolant_flow_rate",
+    "feed_flow_rate",
+    "agitator_speed_rpm",
+    "ambient_temp_effect"
+  ],
+  "y_cols": [
+    "reactor_temp",
+    "reactor_pressure"
+  ],
+  "max_samples": 20000,
+  "zones": {
+    "A": {
+      "ident": {
+        "tag": "A_R2",
+        "file": "zone_A_ident.csv",
+        "n_samples": 20000,
+        "available_in_run": 75198,
+        "run_start": 0,
+        "run_end": 75198,
+        "nan_filled": {
+          "coolant_flow_rate": 4517,
+          "feed_flow_rate": 4586,
+          "agitator_speed_rpm": 4490,
+          "ambient_temp_effect": 4526,
+          "reactor_temp": 4507,
+          "reactor_pressure": 4518
+        }
+      },
+      "operating_point": {
+        "coolant_flow_rate": 79.10157731113415,
+        "feed_flow_rate": 99.99223600513808,
+        "agitator_speed_rpm": 300.0020536650696,
+        "ambient_temp_effect": 4.479823576690326,
+        "reactor_temp": 181.14318885753622,
+        "reactor_pressure": 15.709150323763618
+      },
+      "validation": [
+        {
+          "tag": "A_R1",
+          "file": "zone_A_val_A_R1.csv",
+          "n_samples": 66954,
+          "run_start": 62646,
+          "run_end": 129600,
+          "nan_filled": {
+            "coolant_flow_rate": 4050,
+            "feed_flow_rate": 4010,
+            "agitator_speed_rpm": 4073,
+            "ambient_temp_effect": 3998,
+            "reactor_temp": 4046,
+            "reactor_pressure": 3988
+          }
+        },
+        {
+          "tag": "A_R3",
+          "file": "zone_A_val_A_R3.csv",
+          "n_samples": 65572,
+          "run_start": 56124,
+          "run_end": 121696,
+          "nan_filled": {
+            "coolant_flow_rate": 3936,
+            "feed_flow_rate": 3986,
+            "agitator_speed_rpm": 4021,
+            "ambient_temp_effect": 3898,
+            "reactor_temp": 3990,
+            "reactor_pressure": 3890
+          }
+        }
+      ]
+    },
+    "B": {
+      "ident": {
+        "tag": "B_R2",
+        "file": "zone_B_ident.csv",
+        "n_samples": 20000,
+        "available_in_run": 66722,
+        "run_start": 56708,
+        "run_end": 123430,
+        "nan_filled": {
+          "coolant_flow_rate": 3982,
+          "feed_flow_rate": 3931,
+          "agitator_speed_rpm": 4074,
+          "ambient_temp_effect": 4014,
+          "reactor_temp": 4026,
+          "reactor_pressure": 4063
+        }
+      },
+      "operating_point": {
+        "coolant_flow_rate": 72.18940695040743,
+        "feed_flow_rate": 107.98823851671139,
+        "agitator_speed_rpm": 299.92751559635946,
+        "ambient_temp_effect": -0.8879497453704145,
+        "reactor_temp": 193.64024168928293,
+        "reactor_pressure": 17.554217825730877
+      },
+      "validation": [
+        {
+          "tag": "B_R3",
+          "file": "zone_B_val_B_R3.csv",
+          "n_samples": 39179,
+          "run_start": 11182,
+          "run_end": 50361,
+          "nan_filled": {
+            "coolant_flow_rate": 2371,
+            "feed_flow_rate": 2387,
+            "agitator_speed_rpm": 2346,
+            "ambient_temp_effect": 2360,
+            "reactor_temp": 2319,
+            "reactor_pressure": 2425
+          }
+        },
+        {
+          "tag": "B_R1",
+          "file": "zone_B_val_B_R1.csv",
+          "n_samples": 29782,
+          "run_start": 52348,
+          "run_end": 82130,
+          "nan_filled": {
+            "coolant_flow_rate": 1796,
+            "feed_flow_rate": 1776,
+            "agitator_speed_rpm": 1766,
+            "ambient_temp_effect": 1784,
+            "reactor_temp": 1814,
+            "reactor_pressure": 1857
+          }
+        }
+      ]
+    }
+  }
+}

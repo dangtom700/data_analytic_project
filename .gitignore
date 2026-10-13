@@ -9,22 +9,6 @@ data/**
 !data/**/
 !data/**/README.md
 
-# ─────────────────────────────────────────────────────────────────────────────
-# Work in progress.
-#
-# A dataset folder sitting at the repo ROOT (instead of under data/) means it is
-# the one being actively worked on -- see "Work in progress" in README.md.
-# Same rule as data/: ignore the bulk, keep the README.md and the notebook.
-#
-# When a dataset moves back into data/ its line here becomes a no-op and can go.
-# When you start on the next one, copy the three lines and change the name.
-# ─────────────────────────────────────────────────────────────────────────────
-chemical-process-monitoring-time-series-dataset/**
-!chemical-process-monitoring-time-series-dataset/README.md
-!chemical-process-monitoring-time-series-dataset/*.ipynb
-!chemical-process-monitoring-time-series-dataset/*.py
-!chemical-process-monitoring-time-series-dataset/identified_model.json
-
 # Third-party reference catalogue, cloned not authored.
 # Source: github.com/dalmia/awesome-industrial-datasets
 awesome-industrial-datasets-master/
@@ -64,3 +48,6 @@ venv/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# pip install --target artifacts (the .pyd is already covered by *.py[cod])
+controller_toolbox-*.dist-info/
