@@ -176,7 +176,7 @@ def main() -> None:
         # ---- invariant agreement, only where both tools ran ----
         if len(have) == 2:
             L += ["### Do the two tools agree?", "",
-                  "| order | max |d(eig)| | DC-gain rel. diff | step-resp rel. diff |",
+                  "| order | max abs(d(eig)) | DC-gain rel. diff | step-resp rel. diff |",
                   "|---|---|---|---|"]
             for okey in orders:
                 a = R["matlab"]["zones"].get(z, {}).get("models", {}).get(okey)

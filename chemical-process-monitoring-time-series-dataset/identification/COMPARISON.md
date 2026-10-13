@@ -25,33 +25,24 @@ Identification record: `A_R2`
 | order | tool | rho(A) | ident reactor_temp | ident reactor_pressure | holdout reactor_temp (bias-rm) | holdout reactor_pressure (bias-rm) |
 |---|---|---|---|---|---|---|
 | 1 | ctrl_toolbox | 0.0786 | 2.09% | 0.03% | -144.1% (3.80%) | -15.2% (0.04%) |
-| 1 | matlab | 0.0800 | 1.84% | 0.01% | -144.2% (3.59%) | -16.6% (0.03%) |
+| 1 | matlab | 0.0800 | 2.63% | 0.03% | -143.9% (4.19%) | -15.4% (0.04%) |
 | 2 | ctrl_toolbox | 0.3775 | 2.10% | 0.03% | -144.1% (3.80%) | -15.2% (0.04%) |
-| 2 | matlab | 0.3616 | 1.87% | 0.01% | -144.2% (3.56%) | -15.3% (0.04%) |
+| 2 | matlab | 0.3616 | 2.57% | 0.02% | -143.9% (4.16%) | -15.4% (0.04%) |
 | 3 | ctrl_toolbox | 0.6277 | 2.10% | 0.03% | -144.1% (3.79%) | -15.2% (0.04%) |
-| 3 | matlab | 0.6309 | 1.88% | 0.02% | -144.2% (3.56%) | -15.3% (0.04%) |
+| 3 | matlab | 0.6309 | -10571169.44% | -633721.12% | -2461722.3% (-2461722.26%) | -148538.6% (-148538.56%) |
 | 4 | ctrl_toolbox | 0.7844 | 2.10% | 0.03% | -144.1% (3.79%) | -15.2% (0.04%) |
-| 4 | matlab | 0.7883 | 0.62% | 0.01% | -144.3% (3.44%) | -15.3% (0.04%) |
-| 5 | ctrl_toolbox | 0.9108 | 2.10% | 0.03% | -144.1% (3.79%) | -15.2% (0.04%) |
-| 5 | matlab | 0.9085 | -3930955.02% | -241298.26% | -915358.5% (-915358.49%) | -56510.8% (-56510.81%) |
-| 6 | ctrl_toolbox | 0.9141 | 2.09% | 0.03% | -144.1% (3.75%) | -15.2% (0.04%) |
-| 6 | matlab | 0.9141 | -3785560.29% | -230257.77% | -881499.3% (-881499.23%) | -53921.7% (-53921.73%) |
-| 8 | ctrl_toolbox | 0.9614 | 2.00% | 0.02% | -144.1% (3.70%) | -15.3% (0.04%) |
-| 8 | matlab | 0.9616 | -26737591.26% | -3418099.74% | -6226535.9% (-6226535.85%) | -801509.5% (-801509.49%) |
+| 4 | matlab | 0.7883 | -7938561.04% | -415822.97% | -1848644.1% (-1848644.10%) | -97438.8% (-97438.81%) |
 
 Holdout columns are averaged over the two held-out reactors; the parenthesised value removes a constant per-record offset, separating gain/dynamic error from operating-point bias.
 
 ### Do the two tools agree?
 
-| order | max |d(eig)| | DC-gain rel. diff | step-resp rel. diff |
+| order | max abs(d(eig)) | DC-gain rel. diff | step-resp rel. diff |
 |---|---|---|---|
-| 1 | 1.430e-03 | 1.860e-01 | n/a |
-| 2 | 1.590e-02 | 1.426e-01 | n/a |
-| 3 | 8.210e-03 | 2.812e-01 | n/a |
-| 4 | 3.303e-02 | 2.016e-01 | n/a |
-| 5 | 1.205e+00 | 1.013e-01 | n/a |
-| 6 | 1.565e+00 | 8.697e-02 | n/a |
-| 8 | 1.817e+00 | 1.318e-01 | n/a |
+| 1 | 1.430e-03 | 8.531e-01 | 8.531e-01 |
+| 2 | 1.590e-02 | 8.551e-01 | 1.098e+00 |
+| 3 | 8.210e-03 | 7.428e-01 | 1.437e+00 |
+| 4 | 3.303e-02 | 7.609e-01 | 1.000e+00 |
 
 Agreement here means both implementations extracted the same system. Disagreement on a dataset with no deterministic subspace is expected: each tool is fitting its own noise direction, so the invariants are not pinned down by the data.
 
@@ -74,33 +65,24 @@ Identification record: `B_R2`
 | order | tool | rho(A) | ident reactor_temp | ident reactor_pressure | holdout reactor_temp (bias-rm) | holdout reactor_pressure (bias-rm) |
 |---|---|---|---|---|---|---|
 | 1 | ctrl_toolbox | 0.8100 | 1.96% | 0.02% | -152.3% (2.33%) | -115.1% (0.01%) |
-| 1 | matlab | 0.8039 | 1.47% | -0.00% | -152.6% (1.76%) | -117.0% (0.02%) |
+| 1 | matlab | 0.8039 | 2.00% | 0.03% | -152.2% (2.37%) | -115.0% (0.00%) |
 | 2 | ctrl_toolbox | 0.7765 | 1.81% | 0.02% | -152.3% (2.17%) | -115.1% (0.01%) |
-| 2 | matlab | 0.7803 | 1.50% | 0.00% | -152.5% (1.74%) | -115.0% (0.01%) |
+| 2 | matlab | 0.7803 | -6.61% | -0.09% | -157.2% (-7.24%) | -115.1% (-0.09%) |
 | 3 | ctrl_toolbox | 0.9711 | 1.76% | 0.02% | -152.4% (2.08%) | -115.1% (0.01%) |
-| 3 | matlab | 0.9702 | 1.39% | -0.05% | -152.6% (1.57%) | -115.0% (-0.01%) |
+| 3 | matlab | 0.9702 | -88610610.17% | -41167650.13% | -90649160.6% (-90649160.61%) | -42982233.7% (-42982233.70%) |
 | 4 | ctrl_toolbox | 0.9430 | 1.75% | 0.02% | -152.3% (2.07%) | -115.1% (0.00%) |
-| 4 | matlab | 0.9404 | 1.18% | -0.06% | -152.7% (1.32%) | -115.1% (-0.02%) |
-| 5 | ctrl_toolbox | 0.9842 | 1.68% | 0.01% | -152.4% (2.00%) | -115.1% (0.01%) |
-| 5 | matlab | 0.9839 | -9277412.46% | -5658504.07% | -9490847.9% (-9490847.94%) | -5907920.6% (-5907920.65%) |
-| 6 | ctrl_toolbox | 0.9975 | 1.57% | -0.00% | -152.4% (1.90%) | -115.1% (0.01%) |
-| 6 | matlab | 0.9974 | -39383701.73% | -24180687.93% | -40289753.4% (-40289753.44%) | -25246522.8% (-25246522.75%) |
-| 8 | ctrl_toolbox | 0.9507 | 1.60% | 0.02% | -152.4% (1.91%) | -115.1% (0.01%) |
-| 8 | matlab | 0.9512 | -49921883.53% | -40627192.09% | -51070372.0% (-51070371.98%) | -42417951.5% (-42417951.54%) |
+| 4 | matlab | 0.9404 | -79857253.31% | -25883316.21% | -81694426.6% (-81694426.58%) | -27024200.3% (-27024200.27%) |
 
 Holdout columns are averaged over the two held-out reactors; the parenthesised value removes a constant per-record offset, separating gain/dynamic error from operating-point bias.
 
 ### Do the two tools agree?
 
-| order | max |d(eig)| | DC-gain rel. diff | step-resp rel. diff |
+| order | max abs(d(eig)) | DC-gain rel. diff | step-resp rel. diff |
 |---|---|---|---|
-| 1 | 6.187e-03 | 2.289e-01 | n/a |
-| 2 | 4.425e-03 | 7.103e-01 | n/a |
-| 3 | 1.046e-03 | 2.404e-01 | n/a |
-| 4 | 5.290e-03 | 4.214e-01 | n/a |
-| 5 | 5.640e-03 | 7.030e-02 | n/a |
-| 6 | 7.495e-03 | 5.449e-01 | n/a |
-| 8 | 1.697e+00 | 3.429e-01 | n/a |
+| 1 | 6.187e-03 | 8.115e-01 | 9.584e-01 |
+| 2 | 4.425e-03 | 4.777e-01 | 1.287e+00 |
+| 3 | 1.046e-03 | 5.930e-01 | 1.365e+00 |
+| 4 | 5.290e-03 | 6.027e-01 | 1.399e+00 |
 
 Agreement here means both implementations extracted the same system. Disagreement on a dataset with no deterministic subspace is expected: each tool is fitting its own noise direction, so the invariants are not pinned down by the data.
 
