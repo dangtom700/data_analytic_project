@@ -6,6 +6,15 @@
 # which are the documentation for data we don't store in git.
 # ─────────────────────────────────────────────────────────────────────────────
 data/**
+# ...but never ignore work we wrote ourselves. The datasets under data/ are all
+# re-downloadable via data_download.py (Kaggle handles, idempotent), so the bulk
+# is deliberately untracked. Notebooks, scripts and per-dataset notes are NOT
+# re-downloadable and must stay in git.
+!data/**/
+!data/**/*.py
+!data/**/*.ipynb
+!data/**/*.md
+!data/**/*.m
 !data/**/
 !data/**/README.md
 
@@ -51,3 +60,6 @@ desktop.ini
 
 # pip install --target artifacts (the .pyd is already covered by *.py[cod])
 controller_toolbox-*.dist-info/
+
+# local backups of this file
+.gitignore.bak-*
